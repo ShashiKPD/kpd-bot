@@ -1,0 +1,19 @@
+{
+  "name": "mess-management-project",
+  "version": "1.0.0",
+  "description": "Web Application that integrates with whatsapp chat to manage mess activities via whatsapp.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/"
+  },
+  "author": "Shashikant Prasad",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "groq-sdk": "^0.12.0",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.26.0"
+  }
+}

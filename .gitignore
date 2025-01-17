@@ -1,0 +1,11 @@
+node_modules/
+dist/
+build/
+coverage/
+.wwebjs_cache/
+mess-management-whatsapp-session/
+*.log
+*.tgz
+*.swp
+.env
+.env.local
