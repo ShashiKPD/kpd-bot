@@ -13,6 +13,14 @@ class MessageService {
   static messageExists(messageId) {
     return this.#messageMap.has(messageId);
   }
+  
+  static getUser(messageId) {
+    const message = this.getMessage(messageId);
+    if (!message) {
+      throw new Error(`Message not found. Message ID: ${messageId}`);
+    }
+    return message.author || message.from;
+  }
 
   static async replyToMessage(messageId, replyText) {
     const message = this.getMessage(messageId);
