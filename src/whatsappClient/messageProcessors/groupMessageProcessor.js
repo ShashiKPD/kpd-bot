@@ -1,5 +1,6 @@
-import { isMessGroupChat, isBotTagged } from "./utils.js";
-import { handleMessGroupMessage } from "./messGroupMessageHandler.js";
+import { isBotTagged } from "../utils/commonUtils.js";
+import { isGiriMessGroupChat } from "../utils/groupChatUtils.js";
+import { handleGiriMessGroupMessage } from "../groupMessageHandlers/index.js";
 
 export const processGroupMessage = async (client, message, chat) => {
   console.log(`Group message from ${chat.name}(${chat.id.user}): ${message.body}`);
@@ -7,11 +8,7 @@ export const processGroupMessage = async (client, message, chat) => {
   // If not tagged, return
   if (!isBotTagged(message)) return;
 
-  if (message.body.toLowerCase() === "!ping") {
-    await message.reply("Pong!");
-  }
-
-  if (isMessGroupChat(chat)) {
-    await handleMessGroupMessage(message);
+  if (isGiriMessGroupChat(chat)) {
+    await handleGiriMessGroupMessage(message);
   }
 };

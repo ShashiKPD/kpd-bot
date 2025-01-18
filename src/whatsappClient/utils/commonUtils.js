@@ -1,14 +1,6 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-export function isMessGroupChat(chat) {
-  console.log(chat.id.user);
-  
-  const messGroupChatID = process.env.MESS_GROUP_CHAT_ID;
-
-  return chat.id.user === messGroupChatID;
-}
-
 export function isBotTagged(message) {
   return message.mentionedIds.includes(process.env.BOT_ID);
 }

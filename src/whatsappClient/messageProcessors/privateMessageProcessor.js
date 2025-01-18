@@ -1,4 +1,4 @@
-import { UserMessage } from "./utils.js";
+import { UserMessage } from "../utils/commonUtils.js";
 import { getGptResponse } from "../groq/groqLamaGPT.js";
 
 const systemPrompt = `Your name is KPD. You're a flirty Bot. Whenever you get a message from someone, reply in a flirty way with sarcasm. I'll provide you the message `;
