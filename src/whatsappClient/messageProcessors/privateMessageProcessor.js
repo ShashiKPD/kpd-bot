@@ -3,7 +3,7 @@ import { getGptResponse } from "../groq/groqLamaGPT.js";
 
 const systemPrompt = `Your name is KPD. You're a flirty Bot. Whenever you get a message from someone, reply in a flirty way with sarcasm. I'll provide you the message `;
 
-export const processPrivateMessage = async (client, message, chat) => {
+export const processPrivateMessage = async (message, chat) => {
   console.log(`Private message from ${chat.name || message.from}: ${message.body}`);
   
   // Example action: send reaction

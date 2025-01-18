@@ -13,7 +13,6 @@ const responseSchema = {
         noOfMeals: "int", 
         amount: "int",
         personID: "string",
-        messageID: "string" // this is the messageID of the message for which the context mapping was not found
       }
     }
   ]
@@ -29,7 +28,7 @@ contextMappingNotFound(messageID)                           Context: when the me
 
 ---
 
-for additional context, one day has 2 meals. The phone number of the user and will be used as personID. Make sure to keep in mind the timestamp of the message to calculate the dates.
+Additional context: one day has 2 meals; The phone number of the user and will be used as personID; Make sure to keep in mind the timestamp of the message to calculate the dates. The date format is DD-MM-YYYY; The messageID is the unique identifier of the message that you must include in the JSON response.
 
 ---
 
@@ -37,10 +36,10 @@ from the next prompt, I will be providing you the message details from the user.
 
 const handleGiriMessGroupMessage = async (message) => {
   try{
-    const userMessage = new UserMessage(message.id.id, message.author, message.to, message.mentionedIds, message.body, message.timestamp);
+    const userMessage = new UserMessage(message.id._serialized, message.author, message.to, message.mentionedIds, message.body, message.timestamp);
     const response = await getGptResponse(JSON.stringify(userMessage), systemPrompt, true);
     await message.reply(response);
-    await handleGptJsonResponse(response, GroupNames.GIRI_MESS);
+    await handleGptJsonResponse(message.id._serialized, response, GroupNames.GIRI_MESS);
   }
   catch(error){
     console.log(error);

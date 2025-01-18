@@ -23,7 +23,7 @@ export const initializeWhatsappClient = () => {
   client.on('message_create', async (message) => {
 
     if(!message.fromMe){
-      await handleMessage(client, message);
+      await handleMessage(message);
     }
   });
 

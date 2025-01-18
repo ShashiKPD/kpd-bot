@@ -8,7 +8,7 @@ export async function getGptResponse(userMessage, systemPrompt, isResponseJson) 
   const chatCompletion = await getGroqChatCompletion(userMessage, systemPrompt, isResponseJson);
 
   const response = chatCompletion.choices[0]?.message?.content || "";
-  saveToFile(response);
+  // saveToFile(response);
   return response;
 
 }
@@ -43,17 +43,17 @@ export async function getGroqChatCompletion(userMessage, systemPrompt, isRespons
 }
 
 
-// save gpt response to file
-import { promises as fs } from 'fs';
-import { time } from "console";
+// // save gpt response to file
+// import { promises as fs } from 'fs';
+// import { time } from "console";
 
-const saveToFile = async (content) => {
-  const filePath = './src/whatsappClient/groq/gptResponse.txt'; // Path to the text file
+// const saveToFile = async (content) => {
+//   const filePath = './src/whatsappClient/groq/gptResponse.txt'; // Path to the text file
 
-  try {
-    await fs.writeFile(filePath, content, 'utf8');
-    // console.log(`File has been saved to ${filePath}`);
-  } catch (error) {
-    console.error('Error writing to file:', error);
-  }
-};
+//   try {
+//     await fs.writeFile(filePath, content, 'utf8');
+//     // console.log(`File has been saved to ${filePath}`);
+//   } catch (error) {
+//     console.error('Error writing to file:', error);
+//   }
+// };

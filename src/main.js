@@ -1,10 +1,15 @@
 import { GroupNames } from "./constants/constants.js";
 import handleMessManagementActions from "./MessGroup/actions/giriMessActionHandler.js";
 
-export const handleGptJsonResponse = async (JsonResponse, groupName) => {
+export const handleGptJsonResponse = async (messageId, JsonResponse, groupName) => {
   try {
     // check if the response is a valid json
     const response = JSON.parse(JsonResponse);
+
+    if (response.messageID != messageId) {
+      console.error(`Message ID mismatch in handleGptJsonResponse: ${response.messageID} vs ${messageId}`);
+      return;
+    }
 
     //handle GIRI_MESS group actions
     if(groupName === GroupNames.GIRI_MESS){
@@ -12,6 +17,6 @@ export const handleGptJsonResponse = async (JsonResponse, groupName) => {
     }
 
   } catch (error) {
-    console.error(`Error while parsing GPT JSON response in handleGptJsonResponse: ${error}`);
+    console.error(`handleGptJsonResponse :: Error while parsing GPT JSON response: ${error}`);
   }
 };

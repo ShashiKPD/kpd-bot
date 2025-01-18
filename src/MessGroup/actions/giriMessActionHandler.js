@@ -15,7 +15,7 @@ const actionlist = {
   },
   contextMappingNotFound: {
     function: contextMappingNotFound,
-    params: ["messageID"]
+    params: []
   }
 };
 
@@ -52,7 +52,7 @@ const handleMessManagementActions = async (response) => {
   
             // calling the function with the parameters
             const functionName = actionlist[action.name].function;
-            await functionName(...params.map(param => action.parameters[param]));
+            await functionName(...params.map(param => action.parameters[param]), response.messageID);
   
             // switch case can also be used to call the functions
             // switch(action.name){
