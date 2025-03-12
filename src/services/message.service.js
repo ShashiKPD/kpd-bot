@@ -14,7 +14,7 @@ class MessageService {
     return this.#messageMap.has(messageId);
   }
   
-  static getUser(messageId) {
+  static getAuthor(messageId) {
     const message = this.getMessage(messageId);
     if (!message) {
       throw new Error(`Message not found. Message ID: ${messageId}`);

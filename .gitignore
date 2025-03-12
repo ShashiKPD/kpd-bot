@@ -9,3 +9,5 @@ mess-management-whatsapp-session/
 *.swp
 .env
 .env.local
+chatFormat.txt
+messageFormat.txt
